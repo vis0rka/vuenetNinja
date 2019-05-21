@@ -1,8 +1,18 @@
 <template>
   <div>
-    <app-header v-bind:title="title" v-on:changeTitle="updateTitle($event)"></app-header>
-    <app-ninjas v-bind:ninjas="ninjas"></app-ninjas>
-    <app-footer v-bind:title="title"></app-footer>
+    <form-helper>
+      <div slot="form-header">
+        <h3>This is a title of the from</h3>
+        <p>Information about the form</p>
+      </div>
+      <div slot="form-fields">
+        <input type="text" name="" placeholder="name" required>
+        <input type="password" name="" placeholder="password" required>
+      </div>
+      <div slot="form-controls">
+        <button v-on:click="handleSubmit">Submit</button>
+      </div>
+    </form-helper>
   </div>
 </template>
 
@@ -10,12 +20,14 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Ninjas from "./components/Ninjas";
+import formHelper from "./components/formHelper";
 
 export default {
   components: {
     "app-header": Header,
     "app-footer": Footer,
-    "app-ninjas": Ninjas
+    "app-ninjas": Ninjas,
+    "form-helper": formHelper
   },
   data() {
     return {
@@ -27,14 +39,14 @@ export default {
         { name: "Kami", speciality: "Webpack", show: false },
         { name: "Yoshi", speciality: "Data Diggin", show: false }
       ],
-      title: "Vue Ninjas"
+      title: "I am a dynamic slot title"
     };
   },
   methods: {
     updateTitle(updatedTitle) {
-      this.title = updatedTitle
+      this.title = updatedTitle;
     }
-  },
+  }
 };
 </script>
 

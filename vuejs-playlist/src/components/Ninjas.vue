@@ -29,7 +29,7 @@ export default {
     }
   },
   //lifecycle hooks
-  beforeCreate() {
+/*   beforeCreate() {
     alert('beforeCreate');
   },
   created() {
@@ -46,7 +46,7 @@ export default {
   },
   updated() {
     alert('updated');
-  },
+  }, */
 };
 </script>
 
