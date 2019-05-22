@@ -18,7 +18,7 @@
       </div>
       <label>Author:</label>
       <select v-model="blog.author">
-        <option value="">Select an author...</option>
+        <option value>Select an author...</option>
         <option v-for="author in authors">{{ author }}</option>
       </select>
       <button type="submit" v-on:click.prevent="post">Add Blog</button>
@@ -50,22 +50,20 @@ export default {
         categories: [],
         author: ""
       },
-      authors: ['The Net Ninja', 'The Angular Avenger','The Vue Vindicator'],
-      submitted: false,
+      authors: ["The Net Ninja", "The Angular Avenger", "The Vue Vindicator"],
+      submitted: false
     };
   },
   methods: {
     post() {
-      this.$http.post('https://jsonplaceholder.typicode.com/posts', {
-        title: this.blog.title,
-        body: this.blog.content,
-        userId: 1
-      }).then(response => {
-        console.log(response);
-        this.submitted = true;
-      })
+      this.$http
+        .post("https://testapp-fd1c4.firebaseio.com/posts.json", this.blog)
+        .then(response => {
+          console.log(response);
+          this.submitted = true;
+        });
     }
-  },
+  }
 };
 </script>
 
