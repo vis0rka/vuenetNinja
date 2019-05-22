@@ -1,7 +1,11 @@
 <template>
   <div id="single-blog">
     <h1>{{ blog.title }}</h1>
-    <article>{{ blog.body }}</article>
+    <article>{{ blog.content }}</article>
+    <p>Author{{ blog.author }}</p>
+    <ul>
+      <li v-for="category in blog.categories">{{category}}</li>
+    </ul>
   </div>
 </template>
 <script>
@@ -14,9 +18,10 @@ export default {
   },
   created() {
     this.$http
-      .get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
-      .then(response => {
-        this.blog = response.body;
+      .get(`https://testapp-fd1c4.firebaseio.com/posts/${this.id}.json`)
+      .then(response => response.json())
+      .then(data => {
+        this.blog = data;
       });
   }
 };
