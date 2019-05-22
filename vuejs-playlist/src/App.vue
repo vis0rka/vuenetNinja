@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app-header></app-header>
     <router-view></router-view>
   </div>
 </template>
@@ -8,12 +9,14 @@
 import AddBlog from "./components/addBlog";
 import ShowBlog from "./components/showBlog";
 import ListBlogs from "./components/listBlog";
+import Header from "./components/navHeader";
 
 export default {
   components: {
     "add-blog": AddBlog,
     "show-blog": ShowBlog,
-    "list-blogs": ListBlogs
+    "list-blogs": ListBlogs,
+    "app-header": Header
   },
   data() {
     return {};
