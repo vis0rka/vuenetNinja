@@ -6,13 +6,7 @@ export const bus = new Vue();
 
 Vue.use(VueResource);
 
-//custom directives
-
-Vue.directive('rainbow', {
-  bind(el, binding, vnode) {
-    el.style.color = "#" + Math.random().toString().slice(2, 8);
-  }
-});
+//custom directives global
 
 Vue.directive('theme', {
   bind(el, binding, vnode) {
@@ -28,11 +22,7 @@ Vue.directive('theme', {
   }
 });
 
-//filters
-
-Vue.filter('to-uppercase', (value) => {
-  return value.toUpperCase();
-})
+//filters global
 
 Vue.filter('snippet', (value) => {
   return value.slice(0, 100) + '...';
