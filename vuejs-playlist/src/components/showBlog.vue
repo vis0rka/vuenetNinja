@@ -1,9 +1,9 @@
 <template>
-  <div id="show-blog">
+  <div v-theme:column="'narrow'" id="show-blog">
     <h1>All Blog Articles</h1>
     <div class="single-blog" v-for="blog in blogs">
-      <h2>{{blog.title}}</h2>
-      <article>{{blog.body}}</article>
+      <h2 v-rainbow>{{ blog.title }}</h2>
+      <article>{{ blog.body }}</article>
     </div>
   </div>
 </template>
@@ -12,30 +12,29 @@
 export default {
   data() {
     return {
-      blogs: [],
-    }
+      blogs: []
+    };
   },
-  methods: {
-    
-  },
+  methods: {},
   created() {
-    this.$http.get('https://jsonplaceholder.typicode.com/posts')
-    .then(response => response.json())
-    .then(data => {
-      this.blogs = data.slice(0,10);
-    })
-  },
-}
+    this.$http
+      .get("https://jsonplaceholder.typicode.com/posts")
+      .then(response => response.json())
+      .then(data => {
+        this.blogs = data.slice(0, 10);
+      });
+  }
+};
 </script>
 
 <style scoped>
 #show-blog {
   max-width: 800px;
-  margin:0 auto;
+  margin: 0 auto;
 }
 .single-blog {
-  padding:20px;
-  margin:20px 0;
+  padding: 20px;
+  margin: 20px 0;
   box-sizing: border-box;
   background: #eee;
 }
